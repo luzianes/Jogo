@@ -11,6 +11,11 @@
 #include "keyboard.h"
 #include "timer.h"
 
+void setTerminalSize() {
+    // Redimensiona o terminal para 80x24
+    system("printf '\e[8;24;80t'");
+}
+
 int x = 34, y = 12;
 int incX = 1, incY = 1;
 
@@ -47,6 +52,9 @@ void printKey(int ch)
 int main()
 {
     static int ch = 0;
+
+    // Define o tamanho do terminal
+    setTerminalSize();
 
     screenInit(1);
     keyboardInit();
