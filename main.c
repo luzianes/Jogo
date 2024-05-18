@@ -18,7 +18,7 @@ void printHello(int nextX, int nextY)
 {
     screenSetColor(CYAN, DARKGRAY);
     screenGotoxy(x, y);
-    printf("           ");
+    printf(" ");
     x = nextX;
     y = nextY;
     screenGotoxy(x, y);
@@ -32,7 +32,7 @@ void printKey(int ch)
     printf("Key code :");
 
     screenGotoxy(34, 23);
-    printf("            ");
+    printf(" ");
 
     if (ch == 27) screenGotoxy(36, 23);
     else screenGotoxy(39, 23);
@@ -69,7 +69,7 @@ int main()
         if (timerTimeOver() == 1)
         {
             int newX = x + incX;
-            if (newX >= (MAXX -strlen("Hello World") -1) || newX <= MINX+1) incX = -incX;
+            if (newX >= (MAXX -strlen("O") -1) || newX <= MINX+1) incX = -incX;
             int newY = y + incY;
             if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
 
