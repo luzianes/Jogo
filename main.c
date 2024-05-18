@@ -1,4 +1,4 @@
-#include <studio.h>
+#include <stdio.h>
 #include <string.h>
 #include "screen.h"
 #include "keyboard.h"
