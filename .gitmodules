@@ -1,0 +1,3 @@
+[submodule "libs/cli-lib"]
+	path = libs/cli-lib
+	url = https://github.com/tgfb/cli-lib.git
