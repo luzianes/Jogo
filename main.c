@@ -14,6 +14,7 @@ typedef struct Raquete {
 
 int x = 34, y = 12;
 int incX = 1, incY = 1;
+
 int qtde_raquete = 2;
 
 void printO(int nextX, int nextY) //Letra "O"
@@ -36,12 +37,12 @@ void iniciar_raquete(raquete *rptr, int x, int y, int largura, int altura, char 
 }
 
 void imprimir_raquete(raquete *rptr) {
-    screenSetColor(CYAN, DARKGRAY);
+    screenSetColor(MAGENTA, DARKGRAY);
     for (int i = 0; i < rptr->altura; i++) {
         screenGotoxy(rptr->x, rptr->y + i);
-
-        printf("%c", rptr->simbolo);
-
+        for (int j = 0; j < rptr->largura; j++) {
+            printf("%c", rptr->simbolo);
+        }
     }
 }
 
@@ -58,8 +59,8 @@ int main()
     printO(x, y);
 
     //Inicia as raquetes com a posição (x,y), largura, altura e símbolo
-    iniciar_raquete(&rptr[0], 3, 10, 10, 5, '|');  // Raquete esquerda
-    iniciar_raquete(&rptr[1], 77, 10, 10, 5, '|'); // Raquete direita
+    iniciar_raquete(&rptr[0], 3, 10, 3, 5, '|');  // Raquete esquerda
+    iniciar_raquete(&rptr[1], 77, 10, 3, 5, '|'); // Raquete direita
 
     screenUpdate();
 
