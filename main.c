@@ -7,7 +7,7 @@
 int x = 34, y = 12;
 int incX = 1, incY = 1;
 
-void printHello(int nextX, int nextY)
+void printO(int nextX, int nextY)
 {
     screenSetColor(CYAN, DARKGRAY);
     screenGotoxy(x, y);
@@ -18,24 +18,7 @@ void printHello(int nextX, int nextY)
     printf("O");
 }
 
-void printKey(int ch)
-{
-    screenSetColor(YELLOW, DARKGRAY);
-    screenGotoxy(35, 22);
-    printf("Key code :");
 
-    screenGotoxy(34, 23);
-    printf(" ");
-
-    if (ch == 27) screenGotoxy(36, 23);
-    else screenGotoxy(39, 23);
-
-    printf("%d ", ch);
-    while (keyhit())
-    {
-        printf("%d ", readch());
-    }
-}
 
 int main()
 {
@@ -45,16 +28,16 @@ int main()
     keyboardInit();
     timerInit(50);
 
-    printHello(x, y);
+    printO(x, y);
     screenUpdate();
 
-    while (ch != 10) //enter
+    while (ch != 27) //Jogo ativo enquanto não teclar ESC
     {
         // Handle user input
         if (keyhit())
         {
             ch = readch();
-            printKey(ch);
+
             screenUpdate();
         }
 
@@ -66,8 +49,8 @@ int main()
             int newY = y + incY;
             if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
 
-            printKey(ch);
-            printHello(newX, newY);
+
+            printO(newX, newY);
 
             screenUpdate();
         }
