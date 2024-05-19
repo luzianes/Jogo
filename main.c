@@ -27,7 +27,7 @@ void printO(int nextX, int nextY) //Letra "O"
     printf("O");
 }
 
-void iniciar_raquete(raquete *rptr, int x, int y, int altura, char simbolo) {
+void iniciar_raquete(raquete *rptr, int x, int y, int largura, int altura, char simbolo) {
     rptr->x = x;
     rptr->y = y;
     rptr->largura = largura;
@@ -57,6 +57,7 @@ int main()
 
     printO(x, y);
 
+    //Inicia as raquetes com a posição (x,y), largura, altura e símbolo
     iniciar_raquete(&rptr[0], 2, 10, 4, 2, '|');  // Raquete esquerda
     iniciar_raquete(&rptr[1], 77, 10, 4, 2, '|'); // Raquete direita
 
