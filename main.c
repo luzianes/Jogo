@@ -46,6 +46,18 @@ void imprimir_raquete(raquete *rptr) {
     }
 }
 
+int verificar_colisao(raquete *rptr, int Ox, int Oy) {
+    for (int i = 0; i < rptr->altura; i++) {
+        for (int j = 0; j < rptr->largura; j++) {
+            if (Ox == rptr->x + j && Oy == rptr->y + i) {
+                return 1; // Houve colisão com a raquete
+            }
+        }
+    }
+    return 0; // Não houve colisão com a raquete
+}
+
+
 int main()
 {
     static int ch = 0;
@@ -77,16 +89,26 @@ int main()
         // Update game state (move elements, verify collision, etc)
         if (timerTimeOver() == 1)
         {
+            //Verifica se houve colisão com a moldura
+
             int newX = x + incX;
             if (newX >= (MAXX -strlen("O") -1) || newX <= MINX+1) incX = -incX;
             int newY = y + incY;
             if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
 
+            // Verifica se houve colisão com as raquetes
             for (int i = 0; i < qtde_raquete; i++) {
-                imprimir_raquete(&rptr[i]);
+                if (verificar_colisao(&rptr[i], newX, newY)) {
+                    incX = -incX;
+                    break;
+                }
             }
 
             printO(newX, newY);
+
+            for (int i = 0; i < qtde_raquete; i++) {
+                imprimir_raquete(&rptr[i]);
+            }
 
             screenUpdate();
         }
