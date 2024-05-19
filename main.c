@@ -35,9 +35,9 @@ void iniciar_raquete(raquete *rptr, int x, int y, int altura, char simbolo) {
 
 void imprimir_raquete(raquete *rptr) {
     screenSetColor(CYAN, DARKGRAY);
-    for (int i = 0; i < raquete->altura; i++) {
-        screenGotoxy(raquete->x, raquete->y + i);
-        printf("%c", raquete->simbolo);
+    for (int i = 0; i < rptr->altura; i++) {
+        screenGotoxy(rptr->x, rptr->y + i);
+        printf("%c", rptr->simbolo);
     }
 }
 
