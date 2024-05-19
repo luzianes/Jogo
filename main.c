@@ -58,8 +58,8 @@ int main()
     printO(x, y);
 
     //Inicia as raquetes com a posição (x,y), largura, altura e símbolo
-    iniciar_raquete(&rptr[0], 2, 10, 4, 2, '|');  // Raquete esquerda
-    iniciar_raquete(&rptr[1], 77, 10, 4, 2, '|'); // Raquete direita
+    iniciar_raquete(&rptr[0], 4, 10, 10, 10, '|');  // Raquete esquerda
+    iniciar_raquete(&rptr[1], 77, 10, 10, 10, '|'); // Raquete direita
 
     screenUpdate();
 
