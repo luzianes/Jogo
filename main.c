@@ -20,6 +20,10 @@ int incX = 1, incY = 1;
 //Cria variável com o número de raquetes
 int qtde_raquete = 2;
 
+//Cria variáveis para acumular pontuação
+int jogador1 = 0;
+int jogador2 = 0;
+
 //Função que movimenta a bola no terminal (adaptação do código do prof. Tiago)
 void printO(int nextX, int nextY) //Letra "O"
 {
@@ -42,6 +46,7 @@ void iniciar_raquete(raquete *rptr, int x, int y, int largura, int altura, char 
 }
 
 //Função para imprimir a raquete na tela
+// ------------------------------------------->MELHORAR - deixar raquete mais larga?
 void imprimir_raquete(raquete *rptr) {
     screenSetColor(MAGENTA, DARKGRAY);
     for (int i = 0; i < rptr->altura; i++) {
@@ -96,15 +101,27 @@ int main()
             screenUpdate();
         }
 
-        //Update game state (move elements, verify collision, etc)
         if (timerTimeOver() == 1)
         {
             //Verifica se houve colisão com a moldura (adaptação do código do prof. Tiago)
 
             int newX = x + incX;
-            if (newX >= (MAXX -strlen("O") -1) || newX <= MINX+1) incX = -incX;
             int newY = y + incY;
-            if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
+
+            //Verifica se houve colisão com o lado esquerdo da moldura
+            if (newX <= MINX + 1) {
+                jogador2++;
+                incX = -incX;
+                newX = MINX + 2; // Ajuste para evitar ficar preso
+            }
+
+            //Verifica se houve colisão com o lado direito da moldura
+            if (newX >= MAXX - strlen("O") - 1) {
+                jogador1++;
+                incX = -incX;
+                newX = MAXX - strlen("O") - 2; // Ajuste para evitar ficar preso
+            }
+
 
             // Verifica se houve colisão com as raquetes
             for (int i = 0; i < qtde_raquete; i++) {
@@ -128,6 +145,9 @@ int main()
     keyboardDestroy();
     screenDestroy();
     timerDestroy();
+
+    printf("Jogador 1: %d", jogador1);
+    printf("Jogador 2: %d", jogador2);
 
     return 0;
 }
