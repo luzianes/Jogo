@@ -71,7 +71,7 @@ int main()
     printO(x, y);
 
     //Inicia as raquetes com a posição (x,y), largura, altura e símbolo
-    iniciar_raquete(&rptr[0], 3, 10, 1, 5, '|');  // Raquete esquerda
+    iniciar_raquete(&rptr[0], 4, 10, 1, 5, '|');  // Raquete esquerda
     iniciar_raquete(&rptr[1], 76, 10, 1, 5, '|'); // Raquete direita
 
     screenUpdate();
