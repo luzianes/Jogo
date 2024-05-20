@@ -40,9 +40,9 @@ void imprimir_raquete(raquete *rptr) {
     screenSetColor(MAGENTA, DARKGRAY);
     for (int i = 0; i < rptr->altura; i++) {
         screenGotoxy(rptr->x, rptr->y + i);
-
-        printf("%c", rptr->simbolo);
-
+        for (int j = 0; j < rptr->largura; j++) {
+            printf("%c", rptr->simbolo);
+        }
     }
 }
 
@@ -71,8 +71,8 @@ int main()
     printO(x, y);
 
     //Inicia as raquetes com a posição (x,y), largura, altura e símbolo
-    iniciar_raquete(&rptr[0], 3, 10, 10, 5, '|');  // Raquete esquerda
-    iniciar_raquete(&rptr[1], 77, 10, 10, 5, '|'); // Raquete direita
+    iniciar_raquete(&rptr[0], 3, 10, 3, 5, '|');  // Raquete esquerda
+    iniciar_raquete(&rptr[1], 77, 10, 3, 5, '|'); // Raquete direita
 
     screenUpdate();
 
