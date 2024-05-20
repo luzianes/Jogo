@@ -106,22 +106,9 @@ int main()
             //Verifica se houve colisão com a moldura (adaptação do código do prof. Tiago)
 
             int newX = x + incX;
+            if (newX >= (MAXX - strlen("O") -1) || newX <= MINX+1) incX = -incX;
             int newY = y + incY;
-
-            //Verifica se houve colisão com o lado esquerdo da moldura
-            if (newX <= MINX + 1) {
-                jogador2++;
-                incX = -incX;
-                newX = MINX + 2; // Ajuste para evitar ficar preso
-            }
-
-            //Verifica se houve colisão com o lado direito da moldura
-            if (newX >= MAXX - strlen("O") - 1) {
-                jogador1++;
-                incX = -incX;
-                newX = MAXX - strlen("O") - 2; // Ajuste para evitar ficar preso
-            }
-
+            if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
 
             // Verifica se houve colisão com as raquetes
             for (int i = 0; i < qtde_raquete; i++) {
@@ -145,9 +132,6 @@ int main()
     keyboardDestroy();
     screenDestroy();
     timerDestroy();
-
-    printf("Jogador 1: %d", jogador1);
-    printf("Jogador 2: %d", jogador2);
 
     return 0;
 }
