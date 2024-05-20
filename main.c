@@ -40,7 +40,7 @@ int main()
         printf ("Digite: 1 - Jogar ou 0 - Sair: ");
         scanf ("%d", &opcao);
 
-        swicth (opcao){
+        switch (opcao){
             case 1:
                 while (ch!= 0){
 
