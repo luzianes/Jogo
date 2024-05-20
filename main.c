@@ -42,7 +42,7 @@ int main()
 
         switch (opcao){
             case 1:
-                while (ch!= 0){
+                /*while (ch!= 0){
 
                     printO (x, y);
                     screenUpdate();
@@ -75,13 +75,14 @@ int main()
                         screenUpdate();
                     }
 
-                }
+                }*/
+
             case 0:
                 keyboardDestroy();
-            screenDestroy();
-            timerDestroy();
+                screenDestroy();
+                timerDestroy();
 
-            return 0;
+                return 0;
 
         }
     }
