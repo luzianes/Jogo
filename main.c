@@ -20,7 +20,7 @@ int incX = 1, incY = 1;
 //Cria variável com o número de raquetes
 int qtde_raquete = 2;
 
-//Cria variáveis para acumular pontuação
+//Cria variáveis para acumular pontuação ------------------->FALTA IMPLEMENTAR LÓGICA DE PONTUAÇÃO + SALVAR NO ARQUIVO
 int jogador1 = 0;
 int jogador2 = 0;
 
@@ -91,9 +91,10 @@ int main()
 
     while (ch != 27) //Jogo ativo enquanto não teclar ESC
     {
-        // Verifica a entrada do usuário (tecla clicada)
+        //Verifica a entrada do usuário (tecla clicada)
         //ch = variável que detecta a tecla pressionada
-        // Desenvolver código para movimentar a raquete
+        //---------------------------------------------> FALTA DESENVOLVER CÓDIGO P/ MOVIMENTAR RAQUETE.
+        //---------------------------------------------> AS RAQUETES VÃO SE MOVIMENTAR DE FORMA INDEPENDENTE?
         if (keyhit())
         {
             ch = readch();
