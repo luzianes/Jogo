@@ -5,6 +5,7 @@
 #include "keyboard.h"
 #include "timer.h"
 
+//Define a struct Raquete com seus elementos (typedef cria um alias (raquete))
 typedef struct Raquete {
     int x, y;     // posição (x, y) da raquete
     int largura;  // largura da raquete
@@ -12,11 +13,14 @@ typedef struct Raquete {
     char simbolo; // símbolo que forma a raquete
 } raquete;
 
+//Define a posição inicial (x,y) da bola e seus incrementos (+1)
 int x = 34, y = 12;
 int incX = 1, incY = 1;
 
+//Cria variável com o número de raquetes
 int qtde_raquete = 2;
 
+//Função que movimenta a bola no terminal (adaptação do código do prof. Tiago)
 void printO(int nextX, int nextY) //Letra "O"
 {
     screenSetColor(CYAN, DARKGRAY);
@@ -28,6 +32,7 @@ void printO(int nextX, int nextY) //Letra "O"
     printf("O");
 }
 
+//Inicializa a raquete com seus parâmetros
 void iniciar_raquete(raquete *rptr, int x, int y, int largura, int altura, char simbolo) {
     rptr->x = x;
     rptr->y = y;
@@ -36,16 +41,18 @@ void iniciar_raquete(raquete *rptr, int x, int y, int largura, int altura, char 
     rptr->simbolo = simbolo;
 }
 
+//Função para imprimir a raquete na tela
 void imprimir_raquete(raquete *rptr) {
     screenSetColor(MAGENTA, DARKGRAY);
     for (int i = 0; i < rptr->altura; i++) {
         screenGotoxy(rptr->x, rptr->y + i);
-        for (int j = 0; j < rptr->largura; j++) {
-            printf("%c", rptr->simbolo);
-        }
+
+        printf("%c", rptr->simbolo);
+
     }
 }
 
+//Função para verificar se houve colisão com a raquete
 int verificar_colisao(raquete *rptr, int Ox, int Oy) {
     for (int i = 0; i < rptr->altura; i++) {
         for (int j = 0; j < rptr->largura; j++) {
@@ -62,6 +69,7 @@ int main()
 {
     static int ch = 0;
 
+    //Aloca memória para as raquetes
     raquete *rptr = (raquete*)malloc(qtde_raquete * sizeof(raquete));
 
     screenInit(1);
@@ -78,7 +86,9 @@ int main()
 
     while (ch != 27) //Jogo ativo enquanto não teclar ESC
     {
-        // Handle user input
+        // Verifica a entrada do usuário (tecla clicada)
+        //ch = variável que detecta a tecla pressionada
+        // Desenvolver código para movimentar a raquete
         if (keyhit())
         {
             ch = readch();
@@ -86,10 +96,10 @@ int main()
             screenUpdate();
         }
 
-        // Update game state (move elements, verify collision, etc)
+        //Update game state (move elements, verify collision, etc)
         if (timerTimeOver() == 1)
         {
-            //Verifica se houve colisão com a moldura
+            //Verifica se houve colisão com a moldura (adaptação do código do prof. Tiago)
 
             int newX = x + incX;
             if (newX >= (MAXX -strlen("O") -1) || newX <= MINX+1) incX = -incX;
