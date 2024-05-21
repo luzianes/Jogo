@@ -1,4 +1,4 @@
-# Jogo - Pong Game
+# Jogo - Pong
 
 ## Descrição
 
