@@ -1,3 +1,11 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "screen.h"
+#include "keyboard.h"
+#include "timer.h"
+
+//Define a struct Raquete com seus elementos (typedef cria um alias (raquete))
 typedef struct Raquete {
     int x, y;     // posição (x, y) da raquete
     int largura;  // largura da raquete
